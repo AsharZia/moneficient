@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moneficient/widgets/submit_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   var _sliderInitialValue = 1.0;
+  final leftMarginPadding = 16.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,27 +17,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
+            const SizedBox(height: 35),
+            buildInfoText(
                 'Nice to have you here. Fill the form below,\n it helps us serve you better.'),
-            _buildInfoField('Name', 'Enter your name'),
-            _buildInfoField('Salary', 'Salary'),
-            _buildInfoField('Savings', 'Savings'),
-            _buildInfoField('Currency', 'Currency'),
+            buildInfoField('Name', 'Enter your name'),
+            buildInfoField('Salary', 'Salary'),
+            buildInfoField('Savings', 'Savings'),
+            buildInfoField('Currency', 'Currency'),
             Text('Income division'),
-            Text('This is the amount you want to spend on each category.'),
-            _buildDivisionTile(),
-            _buildDivisionTile(),
-            _buildDivisionTile(),
-            _buildDivisionTile(),
-            _buildDivisionTile(),
+            buildInfoText(
+                'This is the amount you want to spend on each category.'),
+            buildDivisionTile(),
+            buildDivisionTile(),
+            buildDivisionTile(),
+            buildDivisionTile(),
+            const SizedBox(height: 35),
+            Center(
+                child: SubmitButton(
+              text: 'Save & continue',
+            )),
+            const SizedBox(height: 50),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildInfoField(String title, String placeholder) => ListTile(
+  Padding buildInfoText(String text) {
+    return Padding(
+      padding: EdgeInsets.only(left: leftMarginPadding),
+      child: Text(text),
+    );
+  }
+
+  Widget buildInfoField(String title, String placeholder) => ListTile(
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Icon(Icons.access_alarm),
@@ -46,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       );
 
-  Widget _buildDivisionTile() => Column(
+  Widget buildDivisionTile() => Column(
         children: <Widget>[
           ListTile(
             leading: Icon(Icons.access_alarm),
