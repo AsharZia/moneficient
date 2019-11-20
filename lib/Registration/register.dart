@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moneficient/widgets/submit_button.dart';
+import 'package:moneficient/global.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -7,8 +7,11 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  var _sliderInitialValue = 1.0;
-  final leftMarginPadding = 16.0;
+  var _sliderUtilityInitialValue = 1.0;
+  // var _sliderFoodInitialValue = 1.0;
+  // var _sliderPersonalInitialValue = 1.0;
+  // var _sliderOtherInitialValue = 1.0;
+  // final leftMarginPadding = 16.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +32,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Text('Income division'),
             buildInfoText(
                 'This is the amount you want to spend on each category.'),
-            buildDivisionTile(),
-            buildDivisionTile(),
-            buildDivisionTile(),
-            buildDivisionTile(),
+            buildDivisionTile(
+                sliderInitialValue: _sliderUtilityInitialValue,
+                sliderMinValue: 1.0,
+                sliderMaxValue: 10.0,
+                sliderDivisions: 10,
+                sliderLabel: '$_sliderUtilityInitialValue'),
+            // buildDivisionTile(),
+            // buildDivisionTile(),
+            // buildDivisionTile(),
             const SizedBox(height: 35),
             Center(
-                child: SubmitButton(
-              text: 'Save & continue',
+                child: RaisedButton(
+              child: Text('Save & continue'),
+              onPressed: () => Navigator.pushNamed(context, '/goal'),
             )),
             const SizedBox(height: 50),
           ],
@@ -47,7 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Padding buildInfoText(String text) {
     return Padding(
-      padding: EdgeInsets.only(left: leftMarginPadding),
+      padding: EdgeInsets.only(left: Global.leftMarginPadding),
       child: Text(text),
     );
   }
@@ -63,7 +72,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       );
 
-  Widget buildDivisionTile() => Column(
+  Widget buildDivisionTile(
+          {double sliderInitialValue,
+          double sliderMinValue,
+          double sliderMaxValue,
+          int sliderDivisions,
+          String sliderLabel}) =>
+      Column(
         children: <Widget>[
           ListTile(
             leading: Icon(Icons.access_alarm),
@@ -73,14 +88,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 48.0),
             child: Slider(
-              value: _sliderInitialValue,
-              min: 1.0,
-              max: 10.0,
-              divisions: 10,
-              label: '$_sliderInitialValue',
+              value: sliderInitialValue, //_sliderUtilityInitialValue,
+              min: sliderMinValue, //1.0,
+              max: sliderMaxValue, //10.0,
+              divisions: sliderDivisions, //10,
+              label: sliderLabel, //'$_sliderUtilityInitialValue',
               onChanged: (double newValue) {
                 setState(() {
-                  _sliderInitialValue = newValue;
+                  sliderInitialValue = newValue;
                 });
               },
             ),
