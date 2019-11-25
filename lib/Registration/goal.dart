@@ -11,6 +11,7 @@ class _GoalScreenState extends State<GoalScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(
           title: Text('Set a goal'),
         ),
