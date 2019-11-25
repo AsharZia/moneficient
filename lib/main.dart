@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         buttonTheme: ButtonThemeData(
             buttonColor: Colors.purple,
+            textTheme: ButtonTextTheme.primary,
             shape: StadiumBorder(),
-            textTheme: ButtonTextTheme.accent,
             minWidth: 200.0),
       ),
       home: RegisterScreen(),
