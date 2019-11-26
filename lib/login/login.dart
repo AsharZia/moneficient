@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moneficient/home.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -19,7 +20,11 @@ class _LoginScreenState extends State<LoginScreen> {
             Text('Your progress is precious,\nlets save it from loss.'),
             RaisedButton(
               child: Text('Login with Google'),
-              onPressed: () {},
+              onPressed: () => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+                (Route<dynamic> route) => false,
+              ),
             ),
           ],
         ),

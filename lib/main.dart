@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moneficient/Registration/register.dart';
+import 'package:moneficient/home.dart';
 import 'package:moneficient/login/login.dart';
 import 'package:moneficient/registration/goal.dart';
 
