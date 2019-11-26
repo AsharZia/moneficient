@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moneficient/Registration/register.dart';
+import 'package:moneficient/login/login.dart';
 import 'package:moneficient/registration/goal.dart';
 
 Map<int, Color> color =
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
       home: RegisterScreen(),
       routes: {
         '/register': (context) => RegisterScreen(),
-        '/goal': (context) => GoalScreen()
+        '/goal': (context) => GoalScreen(),
+        '/login': (context) => LoginScreen()
       },
     );
   }

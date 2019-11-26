@@ -45,7 +45,7 @@ class _GoalScreenState extends State<GoalScreen> {
             ),
             RaisedButton(
               child: Text('Set goal & continue'),
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, '/login'),
             ),
             FlatButton(
               child: Text(
@@ -54,7 +54,7 @@ class _GoalScreenState extends State<GoalScreen> {
                   decoration: TextDecoration.underline,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, '/login'),
             ),
           ],
         ));
